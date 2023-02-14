@@ -1,19 +1,22 @@
-function getElementUsingId(inputId){
-    const inputField = document.getElementById('inputId');
-    const inputFieldStringValue = inputField.value ;
-    const inputFieldValue = parseFloat(inputFieldStringValue);
-    inputField.value = '';
-    return inputFieldValue;
-}
-
-function getElementById(elementId){
-    const element = document.getElementById(elementId);
-    const elementValue = element.innerText ;
-    const value = parseFloat(elementValue);
-    return value;
-}
+// all the functions called below is written inside utilities js file
 
 document.getElementById('btn-deposit').addEventListener('click',function(){
+    //1.. for deposit purpose
     // calling the function
     const newDepositAmount = getElementUsingId('deposit-field');
+
+    // calling another function
+    const previousDepositTotal = getElementValueById('deposit-total');
+
+    // adding values
+    const totalValue = newDepositAmount + previousDepositTotal;
+    // calling function
+    setElementInnerTextById('deposit-total', totalValue);
+
+    //2... for balance pupose
+    const balance = getElementValueById('balance-total');
+    const totalBalance = balance + newDepositAmount;
+    setElementInnerTextById('balance-total', totalBalance);
+
+   
 })
